@@ -16,3 +16,15 @@ app.use('/api/componentes', componenteRoutes);
 
 
 module.exports = app;
+
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.json({ status: "API REMORAS OK" });
+});
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
+});
+
+
