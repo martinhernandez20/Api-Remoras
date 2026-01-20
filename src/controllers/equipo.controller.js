@@ -27,9 +27,13 @@ const getEquipos = async (req, res) => {
 
     res.json(result.rows);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener equipos' });
-  }
+  console.error('ERROR SQL:', error);
+  res.status(500).json({
+    error: 'Error al obtener equipos',
+    detalle: error.message
+  });
+}
+
 };
 
 /**
@@ -54,9 +58,13 @@ const getEquiposConProblemas = async (req, res) => {
 
     res.json(result.rows);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener equipos con problemas' });
-  }
+  console.error('ERROR SQL:', error);
+  res.status(500).json({
+    error: 'Error al obtener equipos',
+    detalle: error.message
+  });
+}
+
 };
 
 /**
@@ -99,9 +107,13 @@ const crearEquipo = async (req, res) => {
 
     res.status(201).json(result.rows[0]);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al crear equipo' });
-  }
+  console.error('ERROR SQL:', error);
+  res.status(500).json({
+    error: 'Error al obtener equipos',
+    detalle: error.message
+  });
+}
+
 };
 
 /**
@@ -129,9 +141,13 @@ const actualizarEstadoEquipo = async (req, res) => {
 
     res.json(result.rows[0]);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al actualizar estado' });
-  }
+  console.error('ERROR SQL:', error);
+  res.status(500).json({
+    error: 'Error al obtener equipos',
+    detalle: error.message
+  });
+}
+
 };
 
 /**
@@ -204,9 +220,13 @@ const getEquipoDetalle = async (req, res) => {
       problemas: problemasResult.rows
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener detalle del equipo' });
-  }
+  console.error('ERROR SQL:', error);
+  res.status(500).json({
+    error: 'Error al obtener equipos',
+    detalle: error.message
+  });
+}
+
 };
 /**
  * GET /api/equipos/:id/problemas
@@ -248,9 +268,13 @@ const getProblemasByEquipo = async (req, res) => {
       problemas: result.rows
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener problemas del equipo' });
-  }
+  console.error('ERROR SQL:', error);
+  res.status(500).json({
+    error: 'Error al obtener equipos',
+    detalle: error.message
+  });
+}
+
 };
 
 
@@ -261,4 +285,5 @@ module.exports = {
   actualizarEstadoEquipo,
   getEquipoDetalle,
   getProblemasByEquipo
+
 };
